@@ -35,16 +35,25 @@ const tabLinkClasses = (index, activeTab) => {
   return classNames('nav-link', { active: index === activeTab })
 }
 
-const TabsComponent = ({ tabs, activeTab }) => (
-  <ul className='nav nav-tabs'>
-    {
-      tabs.map(
-        ({title}, index) => <li key={index} className='nav-item'>
-          <a className={tabLinkClasses(index, activeTab)} > {title} </a>
-        </li>
-      )
-    }
-  </ul> 
+const TabsComponent = ({ tabs, activeTab, onTabChange }) => (
+  <div>
+    <ul className='nav nav-tabs'>
+      {
+        tabs.map(
+          ({title}, index) => <li key={index} className='nav-item'>
+            <a 
+              className={ tabLinkClasses(index, activeTab) } 
+              onClick={ () => onTabChange(index) } > 
+              {title} 
+            </a>
+          </li>
+        )
+      }
+    </ul> 
+    <div className='tab-content'>
+      <div className='tab-pane active' >{ tabs[activeTab].content }</div>
+    </div>
+  </div>
 )
 
 TabsComponent.defaultProps = {

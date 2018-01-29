@@ -17,10 +17,21 @@ class App extends Component {
     }
   ]
 
+  state = {
+    activeTab: 0
+  }
+
+  setActiveTab = (index) => {
+    this.setState({ activeTab: index })
+  }
+
   render() {
     return (
      <div className='container mt-2'>
-      <Tabs tabs={this.tabs} />
+      <Tabs 
+        tabs={this.tabs}
+        activeTab = {this.state.activeTab}
+        onTabChange= {this.setActiveTab} />
      </div>
     )
   }
