@@ -29,9 +29,10 @@ export default class TabsComponent extends Component {
 */
 
 import React from 'react'
+import classNames from 'classnames'
 
 const tabLinkClasses = (index, activeTab) => {
-  return index === activeTab ? 'nav-link active' : 'nav-link'
+  return classNames('nav-link', { active: index === activeTab })
 }
 
 const TabsComponent = ({ tabs, activeTab }) => (
